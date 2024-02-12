@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">S4AppFormularios</string>
+    <string name="tituloregistro">Registrar Usuario</string>
+    <string name="valetnombre">Ingrese su Nombre</string>
+    <string name="valetapellido">Ingrese su Apellido</string>
+    <string name="genero">Seleccione su Genero:</string>
+    <string name="valrbmasculino">Masculino</string>
+    <string name="valrbfemenino">Femenino</string>
+    <string name="preferencias">Seleccione sus Preferencias</string>
+    <string name="valcbdeportes">Deportes</string>
+    <string name="valcbmusica">Musica</string>
+    <string name="valcbotros">Otros</string>
+    <string name="estadocivil">Seleccione su Estado Civil</string>
+    <string name="valswnotificar">¿Notificar?</string>
+    <string name="valbtnregistrar">Registrar Usuario</string>
+    <string name="valbtnlistar">Listar Usuario</string>
+</resources>
