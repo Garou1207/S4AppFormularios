@@ -3,6 +3,7 @@ package pe.edu.idat.s4appformularios
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Adapter
 import android.widget.AdapterView
@@ -26,8 +27,13 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
         super.onCreate(savedInstanceState)
         binding = ActivityRegistroBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //mensaje en consola
+        Log.i("MensajeInfo","¡¡App inicializada!!")
         binding.btnListar.setOnClickListener(this)
         binding.btnRegistrar.setOnClickListener(this)
+        binding.cbDeportes.setOnClickListener(this)
+        binding.cbMusica.setOnClickListener(this)
+        binding.cbOtros.setOnClickListener(this)
         ArrayAdapter.createFromResource(
             this, R.array.estado_civil,android.R.layout.simple_spinner_item
         ).also { adapter ->
@@ -72,11 +78,12 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
 
     fun registrarPersona(){
         if(validarFormulario()){
-            val infoPersona = binding.etNombres.text.toString()+""+
-                    binding.etApellidos.text.toString()+""+
-                    obtenerGeneroSeleccionado()+""+
-                    listaPreferencias.toArray()+""+
-                    estadocivil+""+
+            val infoPersona = binding.etNombres.text.toString()+"\n"+
+                    binding.etApellidos.text.toString()+"\n"+
+                    //listaPreferencias.toString()+""+
+                    obtenerGeneroSeleccionado()+"\n"+
+                    obtenerPreferencias()+"\n"+
+                    estadocivil+"\n"+
                     binding.swNotificacion.isChecked
             listaPersonas.add(infoPersona)
             AppMensaje.enviarMensaje(binding.root,
@@ -119,6 +126,18 @@ class RegistroActivity : AppCompatActivity(), View.OnClickListener, AdapterView.
         }
         return genero
     }
+
+    fun obtenerPreferencias(): String {
+        var preferencias = ""
+        for ((index, pref) in listaPreferencias.withIndex()) {
+            preferencias += pref
+            if (index < listaPreferencias.size - 1) {
+                preferencias += " - "
+            }
+        }
+        return preferencias
+    }
+
 
 
     // FUNCIONES PARA VALIDAR OPERACIONES
